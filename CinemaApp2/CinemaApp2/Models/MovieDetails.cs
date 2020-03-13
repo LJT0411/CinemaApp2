@@ -13,7 +13,7 @@ namespace CinemaApp2.Models
 
         public string MovieTitle { get; set; }
 
-        public string MovieReleaseTime { get; set; }
+        public DateTime MovieReleaseTime { get; set; }
 
         public MAvail MovieAvailable { get; set; }
     }

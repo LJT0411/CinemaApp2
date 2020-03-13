@@ -10,7 +10,9 @@ namespace CinemaApp2.Models
     {
         public int MovieTimeID { get; set; }
 
-        public string MovieTimeStart { get; set; }
+        public DateTime MovieTimeStart { get; set; }
+
+        public int MovieHallID { get; set; }
 
         public int MovieID { get; set; }
     }

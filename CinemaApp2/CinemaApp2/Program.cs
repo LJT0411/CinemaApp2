@@ -20,17 +20,31 @@ namespace CinemaApp2
 
             var checkMovie = data.MovieDetails.ToList();
             var checkTime = data.MovieTimeDetails.ToList();
-
-
+            
             Random SeatA = new Random();
             for (int y = 0; y < checkTime.Count; y++)
             {
-                for (int i = 1; i < 4; i++)
+                var checkHall = data.MovieTimeDetails.Where(c => c.MovieHallID == checkTime[y].MovieHallID).SingleOrDefault();
+                int check = 0;
+                if (checkHall.MovieHallID == 301)
+                    check = 4;
+                if (checkHall.MovieHallID == 302)
+                    check = 5;
+                if (checkHall.MovieHallID == 303)
+                    check = 6;
+
+                if (checkHall.MovieHallID == 304)
+                    check = 4;
+                if (checkHall.MovieHallID == 305)
+                    check = 5;
+                if (checkHall.MovieHallID == 306)
+                    check = 6;
+
+                for (int i = 1; i < check; i++)
                 {
                     for (int x = 1; x < 11; x++)
                     {
                         SAvail Avail = (SAvail)SeatA.Next(2);
-
 
                         MovieSeatDetails SeatList = new MovieSeatDetails
                         {
@@ -176,17 +190,13 @@ namespace CinemaApp2
                                                         {
                                                             Console.Write(Seat.SeatNo + " " + Seat.SeatAvail + "\t");
                                                             if (Seat.SeatNo.EndsWith("1,10"))
-                                                            {
                                                                 Console.WriteLine("\n");
-                                                            }
                                                             if (Seat.SeatNo.EndsWith("2,10"))
-                                                            {
                                                                 Console.WriteLine("\n");
-                                                            }
                                                             if (Seat.SeatNo.EndsWith("3,10"))
-                                                            {
                                                                 Console.WriteLine("\n");
-                                                            }
+                                                            if (Seat.SeatNo.EndsWith("4,10"))
+                                                                Console.WriteLine("\n");
                                                         }
 
                                                         Console.Write("\n\nEnter a seat number (row,column). Example 1,2 : ");

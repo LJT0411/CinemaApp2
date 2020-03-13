@@ -30,21 +30,21 @@ namespace CinemaApp2
 
         public void GenerateMovie()
         {
-            MovieDetails.Add(new MovieDetails() { MovieID = 101, MovieTitle = "The Justice League", MovieReleaseTime = "Sunday, 01 March 2020", MovieAvailable = MAvail.NowShowing });
-            MovieDetails.Add(new MovieDetails() { MovieID = 102, MovieTitle = "The Matrix", MovieReleaseTime = "Monday, 02 March 2020", MovieAvailable = MAvail.NowShowing });
-            MovieDetails.Add(new MovieDetails() { MovieID = 103, MovieTitle = "The Avengers", MovieReleaseTime = "Friday, 06 March 2020", MovieAvailable = MAvail.ComingSoon });
-            MovieDetails.Add(new MovieDetails() { MovieID = 104, MovieTitle = "Lord of The Rings", MovieReleaseTime = "Tuesday, 10 March 2020", MovieAvailable = MAvail.ComingSoon });
+            MovieDetails.Add(new MovieDetails() { MovieID = 101, MovieTitle = "The Justice League", MovieReleaseTime = new DateTime(2020, 03, 01), MovieAvailable = MAvail.NowShowing });
+            MovieDetails.Add(new MovieDetails() { MovieID = 102, MovieTitle = "The Matrix", MovieReleaseTime = new DateTime(2020, 03, 02), MovieAvailable = MAvail.NowShowing });
+            MovieDetails.Add(new MovieDetails() { MovieID = 103, MovieTitle = "The Avengers", MovieReleaseTime = new DateTime(2020, 03, 06), MovieAvailable = MAvail.ComingSoon });
+            MovieDetails.Add(new MovieDetails() { MovieID = 104, MovieTitle = "Lord of The Rings", MovieReleaseTime = new DateTime(2020, 03, 10), MovieAvailable = MAvail.ComingSoon });
         }
 
         public void GenerateMovieTime()
         {
-            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 201, MovieTimeStart = "27/2/2020 10:00:00 AM", MovieID = 101 });
-            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 202, MovieTimeStart = "27/2/2020 2:30:00 PM" , MovieID = 101 });
-            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 203, MovieTimeStart = "27/2/2020 6:10:00 PM" , MovieID = 101 });
+            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 201, MovieTimeStart = new DateTime(2020, 02, 27, 10, 0, 0), MovieID = 101 , MovieHallID = 301 });
+            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 202, MovieTimeStart = new DateTime(2020, 02, 27, 14, 30, 0), MovieID = 101 , MovieHallID = 302 });
+            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 203, MovieTimeStart = new DateTime(2020, 02, 27, 18, 10, 0), MovieID = 101 , MovieHallID = 303 });
 
-            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 204, MovieTimeStart = "27/2/2020 10:00:00 AM", MovieID = 102 });
-            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 205, MovieTimeStart = "27/2/2020 2:30:00 PM", MovieID = 102 });
-            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 206, MovieTimeStart = "27/2/2020 6:10:00 PM" , MovieID = 102 });
+            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 204, MovieTimeStart = new DateTime(2020, 02, 27, 10, 0, 0), MovieID = 102 , MovieHallID = 304 });
+            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 205, MovieTimeStart = new DateTime(2020, 02, 27, 14, 30, 0), MovieID = 102 , MovieHallID = 305 });
+            MovieTimeDetails.Add(new MovieTimeDetails() { MovieTimeID = 206, MovieTimeStart = new DateTime(2020, 02, 27, 18, 10, 0), MovieID = 102 , MovieHallID = 306 });
         }
     }
 }
