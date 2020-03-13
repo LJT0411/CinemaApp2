@@ -26,18 +26,11 @@ namespace CinemaApp2
             {
                 var checkHall = data.MovieTimeDetails.Where(c => c.MovieHallID == checkTime[y].MovieHallID).SingleOrDefault();
                 int check = 0;
-                if (checkHall.MovieHallID == 301)
+                if (checkHall.MovieHallID == 301 || checkHall.MovieHallID == 304)
                     check = 4;
-                if (checkHall.MovieHallID == 302)
+                if (checkHall.MovieHallID == 302 || checkHall.MovieHallID == 305)
                     check = 5;
-                if (checkHall.MovieHallID == 303)
-                    check = 6;
-
-                if (checkHall.MovieHallID == 304)
-                    check = 4;
-                if (checkHall.MovieHallID == 305)
-                    check = 5;
-                if (checkHall.MovieHallID == 306)
+                if (checkHall.MovieHallID == 303 || checkHall.MovieHallID == 306)
                     check = 6;
 
                 for (int i = 1; i < check; i++)
