@@ -14,16 +14,19 @@ namespace CinemaApp2
         private static AllData data = new AllData();
         static void Main(string[] args)
         {
+            // Insert data 
             data.GenerateUser();
             data.GenerateMovie();
             data.GenerateMovieTime();
 
+            // Get the stored list to this checkMovie and checkTime
             var checkMovie = data.MovieDetails.ToList();
             var checkTime = data.MovieTimeDetails.ToList();
             
             Random SeatA = new Random();
             for (int y = 0; y < checkTime.Count; y++)
             {
+                // This linq used to check the hall id and give the row
                 var checkHall = data.MovieTimeDetails.Where(c => c.MovieHallID == checkTime[y].MovieHallID).SingleOrDefault();
                 int check = 0;
                 if (checkHall.MovieHallID == 301 || checkHall.MovieHallID == 304)
@@ -66,7 +69,7 @@ namespace CinemaApp2
                 {
                     case "1":
                         var CinemaTable = new ConsoleTable("Movie Title", "Release Date", "");
-
+                        // This is foreach used to print the movie output
                         foreach (var MovieTitle in data.MovieDetails)
                         {
                             CinemaTable.AddRow(MovieTitle.MovieTitle, MovieTitle.MovieReleaseTime, DisplayOP(MovieTitle.MovieAvailable));
@@ -85,6 +88,7 @@ namespace CinemaApp2
                         Console.Write("\nPassword : ");
                         var password = Console.ReadLine();
 
+                        // This linq used to check the username valid or not
                         var checkAcc = (from c in data.Users
                                         where c.Username == username
                                         select c).SingleOrDefault();
@@ -120,7 +124,7 @@ namespace CinemaApp2
                                             Console.WriteLine("Select a movie");
 
                                             var CinemaTable2 = new ConsoleTable("ID", "Movie Title", "Release Date", "");
-
+                                            // Print the Now Showing Movie
                                             var checkMovie2 = (from c in data.MovieDetails
                                                                where c.MovieAvailable == MAvail.NowShowing
                                                                select c).ToList();
@@ -134,6 +138,7 @@ namespace CinemaApp2
                                             Console.Write("\nEnter movie id : ");
                                             var movieID = Console.ReadLine();
 
+                                            // This linq used to check the movie id valid or not
                                             var CheckMID = (from c in data.MovieDetails
                                                             where c.MovieID.ToString() == movieID
                                                             select c).SingleOrDefault();
@@ -146,6 +151,7 @@ namespace CinemaApp2
                                                 bool select = true;
                                                 while (select)
                                                 {
+                                                    // This linq used to grab the movie time list by using the checkmid linq
                                                     var ListTime = data.MovieTimeDetails.Where(c => c.MovieID == CheckMID.MovieID).ToList();
                                                     Console.WriteLine("Your movie selection: " + CheckMID.MovieTitle);
                                                     Console.WriteLine("Select date and time");
@@ -162,6 +168,7 @@ namespace CinemaApp2
                                                     Console.Write("Enter Id to choose the movie time : ");
                                                     var movieTime = Console.ReadLine();
 
+                                                    // This linq used to check the movie time id valid or not
                                                     var checkTimeID = (from c in ListTime
                                                                        where c.MovieTimeID.ToString() == movieTime
                                                                        select c).SingleOrDefault();
@@ -175,6 +182,7 @@ namespace CinemaApp2
                                                         Rows.Options.EnableCount = false;
                                                         Rows.Write();
 
+                                                        // This linq used to grab the seats that belong to the movie time id
                                                         var checkHall = (from c in data.MovieSeatDetails
                                                                          where c.MovieTimeID == checkTimeID.MovieTimeID
                                                                          select c).ToList();
@@ -195,11 +203,8 @@ namespace CinemaApp2
                                                         Console.Write("\n\nEnter a seat number (row,column). Example 1,2 : ");
                                                         var seatNumber = Console.ReadLine();
 
-                                                        var checkSeat = (from c in data.MovieSeatDetails
-                                                                         where c.MovieTimeID == checkTimeID.MovieTimeID
-                                                                         select c).ToList();
-
-                                                        var checkNumber = (from c in checkSeat
+                                                        // This linq used to check the seat number that you typed valid or not
+                                                        var checkNumber = (from c in checkHall
                                                                            where c.SeatNo == seatNumber
                                                                            select c).SingleOrDefault();
 
